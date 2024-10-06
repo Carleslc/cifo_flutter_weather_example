@@ -376,23 +376,23 @@ class Dataserie {
   String get precipitation {
     switch (precAmount) {
       case 1:
-        return '< 0.25 mm/hr';
+        return '< 0.25 mm/h';
       case 2:
-        return '< 1 mm/hr';
+        return '< 1 mm/h';
       case 3:
-        return '1-4 mm/hr';
+        return '1-4 mm/h';
       case 4:
-        return '4-10 mm/hr';
+        return '4-10 mm/h';
       case 5:
-        return '10-16 mm/hr';
+        return '10-16 mm/h';
       case 6:
-        return '16-30 mm/hr';
+        return '16-30 mm/h';
       case 7:
-        return '30-50 mm/hr';
+        return '30-50 mm/h';
       case 8:
-        return '50-75 mm/hr';
+        return '50-75 mm/h';
       case 9:
-        return '> 75 mm/hr';
+        return '> 75 mm/h';
       default:
         return 'Sin lluvia';
     }

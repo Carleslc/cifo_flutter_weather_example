@@ -10,6 +10,8 @@ La previsió meteorològica per les pròximes hores i dies es mostra en una llis
 
 Per cada dia es mostra també la sortida i posta de sol, utilitzant l'API [Sunrise Sunset](https://sunrise-sunset.org/api).
 
+Es pot pulsar sobre la icona del temps d'una hora determinada per obtenir més informació com l'estat del vent en km/h o la pluja en mm/h, en cas de que siguin rellevants.
+
 La ubicació de la previsió és fixa utilitzant coordenades latitud i longitud (constant `location` a `lib/services/location_service.dart`).
 
 Codi original: [https://github.com/poqueque/cifo_2024s2_app_weather/](https://github.com/poqueque/cifo_2024s2_app_weather/)
@@ -73,11 +75,12 @@ lib
     └── sun_widget.dart
 ```
 
-L'inici de l'aplicació és a `main.dart`, a `models` hi ha els models de dades com las clases `Meteo` i `SunriseSunset` que s'ha generat amb l'ajuda de la web [quicktype](https://app.quicktype.io/), a `screens` està el codi de la pantalla `WeatherList`, a `services` hi ha els serveis que obtenen les dades de les APIs externes (`WeatherService` i `SunService`) i a `widgets` es troben els widgets propis que no corresponen a una pantalla determinada, com `ForecastList` que obté les dades meteorològiques i mostra la llista de dies utilitzant el widget `ForecastDay`, que obté les dades de la sortida i posta de sol (`SunWidget`) i mostra la previsió de les hores del dia corresponent.
+L'inici de l'aplicació és a `main.dart`, a `models` hi ha els models de dades com las clases `Meteo` i `SunriseSunset` que s'ha generat amb l'ajuda de la web [quicktype](https://app.quicktype.io/), a `screens` està el codi de la pantalla `WeatherList`, a `services` hi ha els serveis que obtenen les dades de les APIs externes (`WeatherService` i `SunService`) i a `widgets` es troben els widgets propis que no corresponen a una pantalla determinada, com `ForecastList` que obté les dades meteorològiques i mostra la llista de dies utilitzant el widget `ForecastDay`, que obté les dades de la sortida i posta de sol (`SunWidget`) i mostra la previsió de les hores del dia corresponent. A `utils` hi ha una extensió per formatejar les dates i hores.
 
 ## Imatges
 
-![weather_example.png](<./images/weather_example.png>)
+![weather_example_1.png](<./images/weather_example_1.png>)
+![weather_example_2.png](<./images/weather_example_2.png>)
 
 ## Recursos
 
