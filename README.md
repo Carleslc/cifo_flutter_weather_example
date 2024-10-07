@@ -2,7 +2,7 @@
 
 **Repositori d'aplicacions: [cifo_flutter](https://github.com/Carleslc/cifo_flutter)**
 
-Aplicació d'exemple per aprendre a utilitzar APIs externes amb Flutter.
+Aplicació d'exemple per aprendre a utilitzar APIs externes amb Flutter i com accedir a la ubicació de l'usuari.
 
 S'utilitza l'API [7timer](https://github.com/Yeqzids/7timer-issues/wiki/Wiki) per obtenir informació meteorològica.
 
@@ -12,7 +12,7 @@ Per cada dia es mostra també la sortida i posta de sol, utilitzant l'API [Sunri
 
 Es pot pulsar sobre la icona del temps d'una hora determinada per obtenir més informació com l'estat del vent en km/h o la pluja en mm/h, en cas de que siguin rellevants.
 
-La ubicació de la previsió és fixa utilitzant coordenades latitud i longitud (constant `location` a `lib/services/location_service.dart`).
+La ubicació de la previsió s'obté del dispositiu mitjançant la llibreria `geolocator` utilitzant coordenades latitud i longitud.
 
 Codi original: [https://github.com/poqueque/cifo_2024s2_app_weather/](https://github.com/poqueque/cifo_2024s2_app_weather/)
 
@@ -70,12 +70,21 @@ lib
 ├── utils
 │   └── date_utils.dart
 └── widgets
+    ├── error_message.dart
     ├── forecast_day.dart
     ├── forecast_list.dart
     └── sun_widget.dart
 ```
 
-L'inici de l'aplicació és a `main.dart`, a `models` hi ha els models de dades com las clases `Meteo` i `SunriseSunset` que s'ha generat amb l'ajuda de la web [quicktype](https://app.quicktype.io/), a `screens` està el codi de la pantalla `WeatherList`, a `services` hi ha els serveis que obtenen les dades de les APIs externes (`WeatherService` i `SunService`) i a `widgets` es troben els widgets propis que no corresponen a una pantalla determinada, com `ForecastList` que obté les dades meteorològiques i mostra la llista de dies utilitzant el widget `ForecastDay`, que obté les dades de la sortida i posta de sol (`SunWidget`) i mostra la previsió de les hores del dia corresponent. A `utils` hi ha una extensió per formatejar les dates i hores.
+L'inici de l'aplicació és a `main.dart`.
+
+A `models` hi ha els models de dades com las clases `Meteo` i `SunriseSunset` que s'han generat amb l'ajuda de la web [quicktype](https://app.quicktype.io/).
+
+A `screens` està el codi de la pantalla `WeatherScreen`, a `services` hi ha els serveis que obtenen les dades de les APIs externes (`WeatherService` i `SunService`) i de la ubicació del dispositiu (`LocationService`).
+
+A `widgets` es troben els widgets propis que no corresponen a una pantalla determinada, com `ForecastList` que obté les dades meteorològiques i mostra la llista de dies utilitzant el widget `ForecastDay`, que obté les dades de la sortida i posta de sol (`SunWidget`) i mostra la previsió de les hores del dia corresponent.
+
+A `utils` hi ha una extensió per formatejar les dates i hores.
 
 ## Imatges
 
@@ -99,6 +108,8 @@ L'inici de l'aplicació és a `main.dart`, a `models` hi ha els models de dades 
 ### Llibreries externes
 
 - [http](https://pub.dev/packages/http)
-- [intl](https://pub.dev/packages/intl)
-- [convert](https://pub.dev/packages/convert)
 - [weather_icons](https://pub.dev/packages/weather_icons)
+- [geolocator](https://pub.dev/packages/geolocator)
+- [geocoding](https://pub.dev/packages/geocoding)
+- [convert](https://pub.dev/packages/convert)
+- [intl](https://pub.dev/packages/intl)

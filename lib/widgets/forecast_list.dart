@@ -5,6 +5,7 @@ import '../services/location_service.dart';
 import '../services/weather_service.dart';
 import 'forecast_day.dart';
 
+/// Previsió meteorològica dels pròxims dies en una ubicació determinada
 class ForecastList extends StatelessWidget {
   static final WeatherService _weatherService = WeatherService();
 
@@ -19,15 +20,30 @@ class ForecastList extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
-            child: CircularProgressIndicator(
-              color: Theme.of(context).colorScheme.secondary,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
+                Text(
+                  'Carregant meteorologia...',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                    fontSize: 20,
+                  ),
+                ),
+              ],
             ),
           );
         } else if (snapshot.hasError) {
           debugPrint('Error (Meteo): ${snapshot.error}');
           return Center(
             child: Text(
-              'Error obtenint dades (Meteo)',
+              'Error obtenint la meteorologia',
               style: TextStyle(
                 color: Theme.of(context).colorScheme.error,
                 fontSize: 20,

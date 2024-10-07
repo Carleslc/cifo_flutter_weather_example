@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'screens/weather_screen.dart';
-import 'services/location_service.dart';
 import 'utils/date_utils.dart';
 
 void main() async {
@@ -28,7 +27,7 @@ class WeatherApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
       ),
-      home: const WeatherScreen(location: location),
+      home: const WeatherScreen(),
       // Localització d'idioma
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       supportedLocales: const [Locale('en'), Locale('es'), Locale('ca')],

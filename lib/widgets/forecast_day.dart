@@ -7,6 +7,7 @@ import '../services/sun_service.dart';
 import '../utils/date_utils.dart';
 import 'sun_widget.dart';
 
+/// Previsió meteorològica d'un dia determinat
 class ForecastDay extends StatelessWidget {
   static final SunService _sunService = SunService();
 

@@ -8,18 +8,20 @@ import '../models/sunrise_sunset.dart';
 import '../utils/date_utils.dart';
 import 'location_service.dart';
 
+/// Servei per obtenir les hores de sortida i posta de sol
 class SunService {
-  SunService._();
-
-  static final SunService _instance = SunService._();
-
-  factory SunService() => _instance; // singleton
-
   // https://sunrise-sunset.org/api
   static const apiUrl = 'https://api.sunrise-sunset.org/json';
 
+  /// Format de les dates que s'envien a la API
   static final format = DateFormat('yyyy-MM-dd');
 
+  // Singleton per controlar una única caché
+  static final SunService _instance = SunService._();
+  factory SunService() => _instance;
+  SunService._();
+
+  /// Guarda les dades per una ubicació i data determinades
   final Map<String, SunriseSunset> _cache = {};
 
   static String _key(LatLng location, DateTime date) =>
@@ -31,6 +33,7 @@ class SunService {
   }) async {
     final String key = _key(location, date);
 
+    // Comprova si està a la caché
     if (_cache.containsKey(key)) {
       return _cache[key]!;
     }
@@ -53,6 +56,7 @@ class SunService {
       throw HttpException(sun.status, uri: url);
     }
 
+    // Actualitza la caché
     _cache[key] = sun;
 
     return sun;

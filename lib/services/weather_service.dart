@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import '../models/meteo.dart';
 import 'location_service.dart';
 
+/// Servei per obtenir dades meteorològiques d'una ubicació
 class WeatherService {
   // https://github.com/Yeqzids/7timer-issues/wiki/Wiki
   static const apiUrl = 'https://www.7timer.info/bin/civil.php';
