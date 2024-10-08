@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -18,6 +19,7 @@ class LocationService {
 
     if (permission == LocationPermission.denied) {
       // Sol·licita permissos d'ubicació
+      debugPrint('Geolocator.requestPermission');
       permission = await Geolocator.requestPermission();
     }
 
@@ -25,6 +27,8 @@ class LocationService {
         permission == LocationPermission.deniedForever) {
       throw LocationPermissionDeniedException(permission);
     }
+
+    debugPrint('Geolocator.getCurrentPosition ($permission)');
 
     final Position position = await Geolocator.getCurrentPosition();
 
@@ -71,7 +75,6 @@ class LocationService {
     if (placemarks.isEmpty) {
       throw GeocodingPlacemarkNotFoundException();
     }
-
     return placemarks.first;
   }
 

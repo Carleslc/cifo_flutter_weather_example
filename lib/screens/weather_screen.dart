@@ -4,6 +4,7 @@ import '../main.dart';
 import '../services/location_service.dart';
 import '../widgets/error_message.dart';
 import '../widgets/forecast_list.dart';
+import '../widgets/forecast_location.dart';
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
@@ -71,13 +72,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
         foregroundColor: Theme.of(context).colorScheme.onPrimary,
       ),
       body: _location != null
-          ? _forecastCurrentLocation(context)
+          ? _forecastCurrentLocation()
           : const SizedBox.shrink(),
     );
   }
 
   /// Mostra la previsió meteorològica de la ubicació actual
-  Widget _forecastCurrentLocation(BuildContext context) {
+  Widget _forecastCurrentLocation() {
     return FutureBuilder(
       future: _location,
       builder: (context, snapshot) {
@@ -148,16 +149,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
         final LatLng location = snapshot.data!;
 
-        debugPrint(
-          'Location: ${location.toString()}\n'
-          'https://maps.google.com/maps?q=${location.lat},${location.lon}',
-        );
+        debugPrint('Location: ${location.toString()}');
 
         // Mostra la previsió meteorològica per la ubicació actual
         return Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
+            ForecastLocation(location: location),
             Expanded(child: ForecastList(location: location)),
           ],
         );
