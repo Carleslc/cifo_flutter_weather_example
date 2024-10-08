@@ -31,6 +31,8 @@ class WeatherApp extends StatelessWidget {
       // Localització d'idioma
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       supportedLocales: const [Locale('en'), Locale('es'), Locale('ca')],
+      // Debug banner
+      debugShowCheckedModeBanner: true,
     );
   }
 }
