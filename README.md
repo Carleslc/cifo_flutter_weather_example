@@ -92,7 +92,6 @@ A `utils` hi ha una extensió per formatejar les dates i hores.
 ## Imatges
 
 ![weather_example_1.png](<./images/weather_example_1.png>)
-![weather_example_2.png](<./images/weather_example_2.png>)
 
 ## Recursos
 
