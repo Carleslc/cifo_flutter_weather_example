@@ -40,6 +40,7 @@ class ForecastLocation extends StatelessWidget {
 
         return Tooltip(
           message: coordinates,
+          showDuration: const Duration(seconds: 30),
           child: GestureDetector(
             onTap: () => launchUrl(Uri.parse(mapsUrl)),
             child: Padding(
